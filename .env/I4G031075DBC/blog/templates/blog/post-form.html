@@ -1,0 +1,33 @@
+{% extends "blog/index.html" %}
+
+{% block content %}
+
+<!-- BOOTSTRAP FORM -->
+
+<div class="container d-flex justify-content-center mt-5" style="width: 25%;">
+    <div class="col mt-5">
+        <form action="." method="POST">
+            {% csrf_token %}
+            <table class="table">
+                <label for="title">Title</label><br>
+                <input class="my-3" type="text" name="title" placeholder="Title"><br>
+                <!-- <label for="author">Author</label><br>
+                <input class="my-3" type="text" name="author" placeholder="Author"><br> -->
+                <label for="body">Content</label><br>
+                <input class="my-3" type="text" name="body" placeholder="Content"><br>
+                <br>
+
+                <div class="container d-flex justify-content-center" style="width: 10%;">
+                    <button type="submit" class="btn btn-primary btn-lg" value="Submit" style="margin-right: 30px; margin-top: 30px;">Submit</button>
+                    <input type="submit" class="btn btn-danger btn-lg" style="margin-top: 30px;" onclick="window.location='{% url 'PostListView' %}'; return false;" value="Cancel">
+                </div>  
+            </table>
+  
+        </form> 
+
+    </div>
+</div>
+
+<!-- END BOOTSTRAP FORM -->
+
+{% endblock %}
