@@ -15,11 +15,13 @@
                 <input class="my-3" type="text" name="author" placeholder="Author"><br> -->
                 <label for="body">Content</label><br>
                 <input class="my-3" type="text" name="body" placeholder="Content"><br>
+                <label for="body">Author</label><br>
+                <input class="my-3" type="text" name="author" placeholder="Author"><br>
                 <br>
 
                 <div class="container d-flex justify-content-center" style="width: 10%;">
                     <button type="submit" class="btn btn-primary btn-lg" value="Submit" style="margin-right: 30px; margin-top: 30px;">Submit</button>
-                    <input type="submit" class="btn btn-danger btn-lg" style="margin-top: 30px;" onclick="window.location='{% url 'PostListView' %}'; return false;" value="Cancel">
+                    <!-- <input type="submit" class="btn btn-danger btn-lg" style="margin-top: 30px;" onclick="window.location='{% url 'PostListView' %}'; return false;" value="Cancel"> -->
                 </div>  
             </table>
   

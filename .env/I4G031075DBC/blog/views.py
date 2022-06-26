@@ -6,8 +6,7 @@ from .models import Post
 
 
 def home(request):
-    post_list = Post.objects.all()
-    context = { "post_list": post_list }
+    context = { }
     return render(request, "blog/index.html", context)
 
 def PostListView(request):
@@ -15,29 +14,33 @@ def PostListView(request):
     context = { "post_list": post_list }
     return render(request, "blog/post-list.html", context)
 
+
 def PostCreateView(request):
+    print(request.POST)
     title = request.POST.get("title") 		
-    body = request.POST.get("body") 
+    body = request.POST.get("body")
+    # author = request.POST.get("author")
 
     if request.method == "POST":
         post = Post.objects.create(title=title, body=body)
+        print(post)
         post.save()
-    context = { }
-    return render(request, "blog/post-form.html", context)
+
+    return render(request, "blog/post-form.html")
 
 
 
-def PostDetailView(request):
-
-    context = {}
+def PostDetailView(request, id):
+    post = Post.objects.get(id=id)
+    context = {'post': post }
     return render(request, "blog/post-detail.html", context)
 
 def PostUpdateView(request):
-    posts = Post.objects.all()
+    posts = Post.objects.update()
     context = { }
     return render(request, "blog/post-confirm-delete.html", context)
 
-def PostDeleteView(request):
-    posts = Post.objects.all()
-    context = { "posts": posts }
+def PostDeleteView(request, id):
+    posts = Post.objects.delete(id=id)
+    context = { }
     return render(request, "blog/post-confirm-delete.html", context)
