@@ -1,0 +1,19 @@
+* {
+    margin: 0 auto;
+    padding: 0;
+    list-style: none;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+
+body {
+    background-color: aliceblue;
+}
+
+
+
+input, textarea {
+    width: 600px;
+ 
+}
