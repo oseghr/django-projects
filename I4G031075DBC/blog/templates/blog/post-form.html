@@ -7,7 +7,7 @@
 
 <div class="container d-flex justify-content-center mt-5" style="width: 25%;">
     <div class="col mt-5 films">
-        <form action="." method="POST">
+        <form action="{% url 'PostCreateView' %}" method="POST">
             {% csrf_token %}
             <table class="table">
                 <label for="title">Title</label><br>
@@ -20,13 +20,7 @@
 
                 <!-- <label for="writer" class="mt-3">Writer</label><br>
                 <input type="text" name="writer" ><br> -->
-                {% if FR_FIELD %}
-                <select name="dropdown_field">
-                      {%for fr_key in DEPENDENT_FILED %}
-                           <option value="{{fr_key.field_name}}" {% if fr_key.field_name = FR_FIELD|add:0 %}selected{% endif %}>{{fr_key.option_name}}</option>
-                     {% endfor %}
-                </select>
-                {% endif %}
+
 
 
                 <br>

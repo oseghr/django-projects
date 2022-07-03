@@ -14,7 +14,7 @@ class Post(models.Model):
 
     title = models.CharField(max_length=255)
     # slug = models.SlugField(max_length=300, unique=True, editable=False)
-    author = models.ForeignKey(User, related_name='blog_posts', on_delete=models.CASCADE)
+    author = models.ForeignKey(User, default=1, related_name='blog_posts', on_delete=models.CASCADE)
     body = models.TextField()
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)

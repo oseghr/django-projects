@@ -6,40 +6,22 @@ from .models import Post
 
 
 def home(request):
-    post_list = Post.objects.all()
-    print("-----------------------")
-    print(post_list)
-    print("-----------------------")
-    context = { "post_list": post_list }
-    return render(request, "blog/post-list.html", context)
+    context = { }
+    return render(request, "blog/index.html", context)
 
 def PostListView(request):
     post_list = Post.objects.all()
-    author = Post.objects.__getitem__("author")
-    # FR_FIELD = DB.OBJECT.GET(DB_OBJ_HAVING_FR) 
-    context['author'] = author
-
-    print("-----------------------")
-    print(post_list)
-    print("-----------------------")
     context = { "post_list": post_list }
-    
     return render(request, "blog/post-list.html", context)
 
 
 def PostCreateView(request):
-    print(request.POST)
     title = request.POST.get("title") 		
     body = request.POST.get("body")
-    # writer = request.POST.get("writer")
-
-    if request.method == "POST":
+    if title:
         post = Post.objects.create(title=title, body=body)
-        print("-----------------------")
-        print(post)
-        print("-----------------------")
         post.save()
-        return redirect('/')
+        return render(request, "blog/post-list.html")
 
     return render(request, "blog/post-form.html")
 
@@ -58,9 +40,5 @@ def PostUpdateView(request, pk):
 
 def PostDeleteView(request, pk):
     post = Post.objects.get(id=pk)
-    print("-----------------------")
-    print(post)
-    print("-----------------------")
     post.delete()
-
     return redirect('/')
