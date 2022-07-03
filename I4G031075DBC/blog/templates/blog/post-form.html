@@ -1,0 +1,47 @@
+{% extends "blog/index.html" %}
+{% load static %}
+
+{% block content %}
+
+<!-- BOOTSTRAP FORM -->
+
+<div class="container d-flex justify-content-center mt-5" style="width: 25%;">
+    <div class="col mt-5 films">
+        <form action="." method="POST">
+            {% csrf_token %}
+            <table class="table">
+                <label for="title">Title</label><br>
+                <input type="text" name="title" ><br>
+                <!-- <label for="author">Author</label><br>
+                <input class="my-3" type="text" name="author" placeholder="Author"><br> -->
+                <label for="body" class="mt-3">Blog post</label><br>
+                <textarea rows="10" type="text" name="body" ></textarea><br>
+
+
+                <!-- <label for="writer" class="mt-3">Writer</label><br>
+                <input type="text" name="writer" ><br> -->
+                {% if FR_FIELD %}
+                <select name="dropdown_field">
+                      {%for fr_key in DEPENDENT_FILED %}
+                           <option value="{{fr_key.field_name}}" {% if fr_key.field_name = FR_FIELD|add:0 %}selected{% endif %}>{{fr_key.option_name}}</option>
+                     {% endfor %}
+                </select>
+                {% endif %}
+
+
+                <br>
+
+                <div class="container d-flex justify-content-center" style="width: 10%;">
+                    <button type="submit" class="btn btn-primary btn-lg" value="Submit" style="margin-right: 30px; margin-top: 30px;">Submit</button>
+                    <!-- <input type="submit" class="btn btn-danger btn-lg" style="margin-top: 30px;" onclick="window.location='{% url 'PostListView' %}'; return false;" value="Cancel"> -->
+                </div>  
+            </table>
+  
+        </form> 
+
+    </div>
+</div>
+
+<!-- END BOOTSTRAP FORM -->
+
+{% endblock %}

@@ -1,0 +1,25 @@
+{% extends 'blog/index.html' %}
+{% load static %}
+
+{% block content %}
+
+<div class="container mt-5" style="width: 70%;">
+    <div class="col">
+        <h1 class="text-center">{{post.id}}</h1>
+        <h1 class="text-center">{{post.title}}</h1>
+        <hr>
+        <div class="d-flex justify-content-center">
+            <section>
+                <p>{{post.body|linebreaks}}</p>
+            </section>
+        </div>
+        <div>Writer: <strong>{{post.writer}}<strong><br>
+            <small>Published: {{post.publish|date:"D, d M, y"}}</small>
+        </div>
+        <div class="d-flex justify-content-center">
+            <a href="{% url 'home' %}" class="d-block btn btn-primary btn-lg my-5">BACK</a>
+        </div>
+    </div>
+</div>
+
+{% endblock  %}
