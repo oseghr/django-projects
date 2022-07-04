@@ -36,7 +36,7 @@
                     <td class="text-center">{{post.body|truncatewords:30|linebreaks}}</td>
                     <td class="text-center">{{post.status}}</td>
                     <td class="text-center">{{post.published_at|date:"D, d M, y"}}</td>
-                    <td><a href="update/{{ posts.id }}">Update</a></td>
+                    <td><a href="{% url 'PostUpdateView' post.id %}">Update</a></td>
                     <td><a href="{% url 'PostDeleteView' post.id %}">Delete</a></td>
                 </tr>
             {% endfor %}
@@ -44,7 +44,7 @@
             </tbody>
         </table>    
         <div class="d-flex justify-content-center">
-            <a href="./post-form.html" class="d-block btn btn-primary btn-lg my-5">Add New</a>
+            <a href="{% url 'PostCreateView' %}" class="d-block btn btn-primary btn-lg my-5">Add New</a>
         </div>
     </div>
         

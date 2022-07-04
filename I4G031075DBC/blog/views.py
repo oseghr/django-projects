@@ -21,8 +21,7 @@ def PostCreateView(request):
     if title:
         post = Post.objects.create(title=title, body=body)
         post.save()
-        return render(request, "blog/post-list.html")
-
+        return redirect(PostListView)
     return render(request, "blog/post-form.html")
 
 
@@ -34,9 +33,13 @@ def PostDetailView(request, id):
 
 def PostUpdateView(request, pk):
     post = Post.objects.get(id=pk)
-    post.update()
+    if post:
+        title = request.POST.get("title") 		
+        body = request.POST.get("body")
+        post.update(title=title, body=body)
+        return redirect(PostListView)
     context = {'post': post }
-    return render(request, "blog/index.html", context)
+    return render(request, "blog/post-form.html", context)
 
 def PostDeleteView(request, pk):
     post = Post.objects.get(id=pk)
